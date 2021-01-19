@@ -16,23 +16,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-public class AppTest 
-{
+public class AppTest {
     static WebDriver driver;
-
-    /*@BeforeTest
-    public void setUp()throws MalformedURLException {
-        final String WEBDRIVER = "webdriver.chrome.driver";
-        final String CHROME_DRIVER_LOCATION = "/home/david/Letöltések";
-        System.setProperty(WEBDRIVER, CHROME_DRIVER_LOCATION);
-        String nodeUrl = "https://seleniumhub.codecool.codecanvas.hu/wd/hub";
-        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-        capabilities.setBrowserName("chrome");
-        capabilities.setPlatform(Platform.LINUX);
-
-        driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
-    }*/
-
 
     @Test
     public void shouldAnswerWithTrue() throws MalformedURLException {
@@ -66,10 +51,6 @@ public class AppTest
         assertEquals(practiceUrl, currentUrl);
     }
 
-    /*@AfterTest
-    public void afterTest(){
-        driver.quit();
-    }*/
 }
 
 
