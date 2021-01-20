@@ -14,7 +14,7 @@ pipeline {
                 sh 'printenv | sort'
                 }
         }
-        stage {
+        stage ('test'){
             steps {
                 sh 'mvn test'
             }
