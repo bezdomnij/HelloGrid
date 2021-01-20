@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        BROWSERUSED = "chrome"
+        BROWSER_USED = "chrome"
         SEL_USER = "selenium"
     }
     stages {
@@ -9,8 +9,9 @@ pipeline {
 
             steps {
                 sh 'mvn --version'
-                sh 'echo $BROWSERUSED'
+                sh 'echo $BROWSER_USED'
                 sh 'echo $SEL_USER'
+                sh 'printenv | sort'
                 }
         }
     }
