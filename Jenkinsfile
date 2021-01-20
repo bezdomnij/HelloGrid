@@ -16,8 +16,16 @@ pipeline {
         }
         stage ('test'){
             steps {
-                sh 'mvn test'
+                sh 'export BROWSER=firefox'
+                sh 'echo $BROWSER'
+//                 sh 'mvn test'
             }
         }
     }
+    post {
+        always {
+            echo 'Cleanup phase'
+            cleanWs()
+            }
+        }
 }
