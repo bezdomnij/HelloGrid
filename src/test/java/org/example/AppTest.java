@@ -12,7 +12,7 @@ import java.net.URL;
 import static org.junit.Assert.*;
 
 public class AppTest {
-    static WebDriver driver;
+    private WebDriver driver;
     private final String nodeUrl
             = "https://selenium:CoolCanvas19.@seleniumhub.codecool.codecanvas.hu/wd/hub";
 
