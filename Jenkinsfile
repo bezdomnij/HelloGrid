@@ -21,7 +21,7 @@ pipeline {
             steps {
                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
-                sh 'mvn -DBROWSER={BROWSER} test'
+                sh 'mvn -DBROWSER={params.chrome} test'
             }
         }
     }
