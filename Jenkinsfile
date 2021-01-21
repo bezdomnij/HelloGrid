@@ -16,7 +16,7 @@ pipeline {
         }
         stage ('run with firefox'){
             when {
-                expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
+                expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
                 }
             steps {
 //                 sh 'export BROWSER=firefox'
@@ -24,6 +24,16 @@ pipeline {
                 sh 'mvn -DBROWSER={params.firefox} test'
             }
         }
+        stage ('run with chrome'){
+                    when {
+                        expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
+                        }
+                    steps {
+        //                 sh 'export BROWSER=firefox'
+                        sh 'echo $BROWSER'
+                        sh 'mvn -DBROWSER={params.chrome} test'
+                    }
+                }
     }
     post {
         always {
