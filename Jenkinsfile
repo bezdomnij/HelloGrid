@@ -15,6 +15,9 @@ pipeline {
                 }
         }
         stage ('test'){
+            when {
+                expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
+                }
             steps {
                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
