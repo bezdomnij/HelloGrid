@@ -14,14 +14,14 @@ pipeline {
                 sh 'printenv | sort'
                 }
         }
-        stage ('test'){
+        stage ('run with firefox'){
             when {
                 expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
                 }
             steps {
-                sh 'export BROWSER=firefox'
+//                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
-                sh 'mvn -DBROWSER={params.chrome} test'
+                sh 'mvn -DBROWSER={params.firefox} test'
             }
         }
     }
