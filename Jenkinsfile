@@ -26,23 +26,23 @@ pipeline {
             steps {
                 sh 'echo run w/ firefox'
                 sh 'echo $BROWSER'
-                sh '$BROWSER=firefox'
+                sh '$BROWSER=$firefox'
                 sh 'echo $BROWSER'
 //                 sh 'mvn -DBROWSER=${parameters.firefox} test'
             }
         }
         stage ('run with chrome'){
-                    when {
-                        expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
-                        }
-                    steps {
-                    sh 'echo run w/ chrome'
-        //                 sh 'export BROWSER=firefox'
-                        sh 'echo $BROWSER'
-                        sh '$BROWSER=chrome'
-                        sh 'echo $BROWSER'
+            when {
+                expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
+                }
+            steps {
+            sh 'echo run w/ chrome'
+//                 sh 'export BROWSER=firefox'
+                sh 'echo $BROWSER'
+                sh '$BROWSER=$chrome'
+                sh 'echo $BROWSER'
 //                         sh 'mvn test'
-                    }
+            }
                 }
     }
     post {
