@@ -15,9 +15,6 @@ pipeline {
                 }
         }
         stage ('run with firefox'){
-            when {
-                expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
-                }
             steps {
 //                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
@@ -25,9 +22,6 @@ pipeline {
             }
         }
         stage ('run with chrome'){
-                    when {
-                        expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
-                        }
                     steps {
         //                 sh 'export BROWSER=firefox'
                         sh 'echo $BROWSER'
