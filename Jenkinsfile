@@ -26,6 +26,7 @@ pipeline {
             steps {
 //                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
+                sh 'mvn -DBROWSER={BROWSER=$firefox} test'
                 sh 'mvn -DBROWSER=${firefox} test'
             }
         }
@@ -36,7 +37,7 @@ pipeline {
                     steps {
         //                 sh 'export BROWSER=firefox'
                         sh 'echo $BROWSER'
-                        sh 'mvn -DBROWSER=${chrome} test'
+                        sh 'mvn -DBROWSER={BROWSER=$chrome} test'
                     }
                 }
     }
