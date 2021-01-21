@@ -38,6 +38,9 @@ pipeline {
                 expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
                 }
             steps {
+                        script {
+                                env.BROWSER = chrome
+                                        }
             sh 'echo run w/ chrome'
 //                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
