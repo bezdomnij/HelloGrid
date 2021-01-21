@@ -19,32 +19,43 @@ pipeline {
                 sh 'printenv | sort'
                 }
         }
-        stage ('run with firefox'){
-            when {
-                expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
-                }
-            steps {
-                script {
-                        env.BROWSER = firefox
+
+            stage ('run with firefox'){
+                when {
+                    expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
                     }
-                sh 'echo run w/ firefox'
-                sh 'echo $BROWSER'
-                sh 'mvn test'
-            }
-        }
-        stage ('run with chrome'){
-            when {
-                expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
+                steps {
+                    script {
+                            env.BROWSER = firefox
+                        }
+                    sh 'echo run w/ firefox'
+                    sh 'echo $BROWSER'
+                    sh 'mvn test'
                 }
-            steps {
-                script {
-                    env.BROWSER = chrome
+                post {
+                    always {
+                        junit 'target/surefire-reports/*.xml'
+                    }
                 }
-                sh 'echo run w/ chrome'
-                sh 'echo $BROWSER'
-                sh 'mvn test'
             }
-        }
+            stage ('run with chrome'){
+                when {
+                    expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
+                    }
+                steps {
+                    script {
+                        env.BROWSER = chrome
+                    }
+                    sh 'echo run w/ chrome'
+                    sh 'echo $BROWSER'
+                    sh 'mvn test'
+                }
+                post {
+                    always {
+                        junit 'target/surefire-reports/*.xml'
+                    }
+                }
+            }
     }
     post {
         always {
