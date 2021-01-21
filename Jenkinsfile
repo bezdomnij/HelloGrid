@@ -45,7 +45,6 @@ pipeline {
             sh 'echo run w/ chrome'
 //                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
-                sh '$BROWSER=$chrome'
                 sh 'echo $BROWSER'
                 sh 'mvn test'
             }
