@@ -19,7 +19,9 @@ pipeline {
                 sh 'printenv | sort'
                 }
         }
-
+        stage ('Parallel stage') {
+            failFast true
+            parallel {
             stage ('run with firefox'){
                 when {
                     expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
@@ -56,6 +58,8 @@ pipeline {
                     }
                 }
             }
+            }
+        }
     }
     post {
         always {
