@@ -26,7 +26,7 @@ pipeline {
             steps {
                 sh 'echo run w/ firefox'
                 sh 'echo $BROWSER'
-                sh '$BROWSER=$firefox'
+                sh '$BROWSER=${env.firefox}'
                 sh 'echo $BROWSER'
 //                 sh 'mvn -DBROWSER=${parameters.firefox} test'
             }
