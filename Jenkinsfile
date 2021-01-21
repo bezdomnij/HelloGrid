@@ -29,7 +29,6 @@ pipeline {
                             }
                 sh 'echo run w/ firefox'
                 sh 'echo $BROWSER'
-                BROWSER=${env.firefox}
                 sh 'echo $BROWSER'
 //                 sh 'mvn -DBROWSER=${parameters.firefox} test'
             }
