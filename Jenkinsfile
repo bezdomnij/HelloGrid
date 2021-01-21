@@ -21,7 +21,7 @@ pipeline {
             steps {
 //                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
-                sh 'mvn -DBROWSER={params.firefox} test'
+                sh 'mvn -DBROWSER=${params.firefox} test'
             }
         }
         stage ('run with chrome'){
@@ -31,7 +31,7 @@ pipeline {
                     steps {
         //                 sh 'export BROWSER=firefox'
                         sh 'echo $BROWSER'
-                        sh 'mvn -DBROWSER={params.chrome} test'
+                        sh 'mvn -DBROWSER=${params.chrome} test'
                     }
                 }
     }
