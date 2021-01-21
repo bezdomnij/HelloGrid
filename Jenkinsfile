@@ -24,10 +24,11 @@ pipeline {
                 expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
                 }
             steps {
-            script {
-                    env.BROWSER = firefox
-                }
+                script {
+                        env.BROWSER = firefox
+                    }
                 sh 'echo run w/ firefox'
+                sh 'echo $BROWSER'
                 sh 'mvn test'
             }
         }
@@ -40,6 +41,7 @@ pipeline {
                     env.BROWSER = chrome
                 }
                 sh 'echo run w/ chrome'
+                sh 'echo $BROWSER'
                 sh 'mvn test'
             }
         }
