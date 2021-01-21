@@ -26,11 +26,8 @@ pipeline {
             steps {
             script {
                     env.BROWSER = firefox
-                            }
+                }
                 sh 'echo run w/ firefox'
-                sh 'echo $BROWSER'
-                sh 'echo $BROWSER'
-//                 sh 'mvn -DBROWSER=${parameters.firefox} test'
                 sh 'mvn test'
             }
         }
@@ -39,16 +36,13 @@ pipeline {
                 expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
                 }
             steps {
-                        script {
-                                env.BROWSER = chrome
-                                        }
-            sh 'echo run w/ chrome'
-//                 sh 'export BROWSER=firefox'
-                sh 'echo $BROWSER'
-                sh 'echo $BROWSER'
+                script {
+                    env.BROWSER = chrome
+                }
+                sh 'echo run w/ chrome'
                 sh 'mvn test'
             }
-                }
+        }
     }
     post {
         always {
