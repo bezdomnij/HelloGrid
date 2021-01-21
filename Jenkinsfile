@@ -1,9 +1,14 @@
 pipeline {
     agent any
+    parameters {
+        string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: Both, Chrome, Firefox')
+        string(name: 'chrome', defaultValue: 'chrome', description: 'Chrome browser')
+        string(name: 'firefox', defaultValue: 'firefox', description: 'Firefox browser')
+        }
     environment {
         BROWSER_USED = "chrome"
         SEL_USER = "selenium"
-    }
+        }
     stages {
         stage ('Build'){
             steps {
@@ -21,7 +26,7 @@ pipeline {
             steps {
 //                 sh 'export BROWSER=firefox'
                 sh 'echo $BROWSER'
-                sh 'mvn -DBROWSER={params.firefox} test'
+                sh 'mvn -DBROWSER=${firefox} test'
             }
         }
         stage ('run with chrome'){
@@ -31,7 +36,7 @@ pipeline {
                     steps {
         //                 sh 'export BROWSER=firefox'
                         sh 'echo $BROWSER'
-                        sh 'mvn -DBROWSER={params.chrome} test'
+                        sh 'mvn -DBROWSER=${chrome} test'
                     }
                 }
     }
