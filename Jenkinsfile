@@ -31,6 +31,7 @@ pipeline {
                 sh 'echo $BROWSER'
                 sh 'echo $BROWSER'
 //                 sh 'mvn -DBROWSER=${parameters.firefox} test'
+                sh 'mvn test'
             }
         }
         stage ('run with chrome'){
@@ -46,7 +47,7 @@ pipeline {
                 sh 'echo $BROWSER'
                 sh '$BROWSER=$chrome'
                 sh 'echo $BROWSER'
-//                         sh 'mvn test'
+                sh 'mvn test'
             }
                 }
     }
