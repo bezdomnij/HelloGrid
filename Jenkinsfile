@@ -11,16 +11,21 @@ pipeline {
     stages {
         stage ('Build'){
             steps {
-                script {withCredentials(usernamePassword([
-                            credentialsId: 'githubcreds',
-                            passwordVariable: 'pass',
-                            usernameVariable: 'user'])
+                script {withCredentials([usernamePassword(
+                    credentialsId: 'jira2-admin',
+                    passwordVariable: 'pass',
+                    usernameVariable: 'user'),
+                    usernamePassword(
+                    credentialsId: 'jira-user6-credentials',
+                    passwordVariable: 'sel_pass',
+                    usernameVariable: 'username')]) {
+                        echo 'Test WITH USER: '
+                        echo $user
+//                         sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
+                    }
                 }
-                sh 'mvn --version'
-                sh 'mvn clean'
-                sh 'echo $user'
-                sh 'printenv | sort'
                 }
+            }
         }
         stage ('Parallel stage') {
             failFast true
