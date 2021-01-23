@@ -34,7 +34,7 @@ script {
                     steps {
                         sh 'echo run w/ firefox'
                         sh 'echo $BROWSER'
-                        sh 'mvn test'
+                        sh 'mvn -DBROWSER=chrome test'
                     }
                     post {
                         always {
