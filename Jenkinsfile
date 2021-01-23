@@ -28,10 +28,11 @@ script {
             failFast true
             parallel {
                 stage ('run with firefox'){
-//                     environment {
-//                         BROWSER = "firefox"
-//                     }
+                    environment {
+                        BROWSER = "firefox"
+                    }
                     steps {
+
                         sh 'echo run w/ firefox'
                         sh 'echo $BROWSER'
 //                         sh 'mvn -DBROWSER=chrome test'
@@ -44,9 +45,9 @@ script {
                     }
                 }
                 stage ('run with chrome'){
-//                     environment {
-//                         BROWSER = "chrome"
-//                     }
+                    environment {
+                        BROWSER = "chrome"
+                    }
                     steps {
                         sh 'echo run w/ chrome'
                         sh 'echo $BROWSER'
