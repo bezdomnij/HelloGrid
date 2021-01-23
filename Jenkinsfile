@@ -35,6 +35,7 @@ script {
                         sh 'echo run w/ firefox'
                         sh 'echo $BROWSER'
                         sh 'mvn -DBROWSER=chrome test'
+
                     }
                     post {
                         always {
