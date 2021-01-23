@@ -21,48 +21,36 @@ pipeline {
         stage ('Parallel stage') {
             failFast true
             parallel {
-            stage ('run with firefox'){
-                environment {
-                    BROWSER = "firefox"
-                }
-                when {
-                    expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
+                stage ('run with firefox'){
+                    environment {
+                        BROWSER = "firefox"
                     }
-                steps {
-//                     script {
-//                             env.BROWSER = firefox
-//                         }
-                    sh 'echo run w/ firefox'
-                    sh 'echo $BROWSER'
-                    sh 'mvn test'
-                }
-                post {
-                    always {
-                        junit 'target/surefire-reports/*.xml'
+                    steps {
+                        sh 'echo run w/ firefox'
+                        sh 'echo $BROWSER'
+                        sh 'mvn test'
+                    }
+                    post {
+                        always {
+                            junit 'target/surefire-reports/*.xml'
+                        }
                     }
                 }
-            }
-            stage ('run with chrome'){
-                environment {
-                                    BROWSER = "chrome"
-                                }
-                when {
-                    expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
+                stage ('run with chrome'){
+                    environment {
+                        BROWSER = "chrome"
                     }
-                steps {
-//                     script {
-//                         env.BROWSER = chrome
-//                     }
-                    sh 'echo run w/ chrome'
-                    sh 'echo $BROWSER'
-                    sh 'mvn test'
-                }
-                post {
-                    always {
-                        junit 'target/surefire-reports/*.xml'
+                    steps {
+                        sh 'echo run w/ chrome'
+                        sh 'echo $BROWSER'
+                        sh 'mvn test'
+                    }
+                    post {
+                        always {
+                            junit 'target/surefire-reports/*.xml'
+                        }
                     }
                 }
-            }
             }
         }
     }
