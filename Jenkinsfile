@@ -19,7 +19,7 @@ script {
                 {
                     echo 'Test phase with chrome: '
                     // sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
-                    echo $user
+                    sh 'echo $user'
                 }
             }
                 }
