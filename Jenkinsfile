@@ -11,11 +11,21 @@ pipeline {
     stages {
         stage ('Build'){
             steps {
-                sh 'mvn --version'
-                sh 'mvn clean'
-                sh 'echo $BROWSER_USED'
-                sh 'echo $SEL_USER'
-                sh 'printenv | sort'
+script {
+                withCredentials([usernamePassword(
+                credentialsId: 'githubcreds',
+                passwordVariable: 'pass',
+                usernameVariable: 'user'),
+                usernamePassword(
+                credentialsId: 'jira-user6-credentials',
+                passwordVariable: 'sel_pass',
+                usernameVariable: 'username')])
+                {
+                    echo 'Test phase with chrome: '
+                    // sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
+                    echo $user
+                }
+            }
                 }
         }
         stage ('Parallel stage') {
