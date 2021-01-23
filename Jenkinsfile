@@ -15,11 +15,7 @@ script {
                 withCredentials([usernamePassword(
                 credentialsId: 'githubcreds',
                 passwordVariable: 'pass',
-                usernameVariable: 'user'),
-                usernamePassword(
-                credentialsId: 'jira-user6-credentials',
-                passwordVariable: 'sel_pass',
-                usernameVariable: 'username')])
+                usernameVariable: 'user')])
                 {
                     echo 'Test phase with chrome: '
                     // sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
