@@ -11,10 +11,14 @@ pipeline {
     stages {
         stage ('Build'){
             steps {
+                script {withCredentials(usernamePassword(
+                            credentialsId: 'githubcreds',
+                            passwordVariable: 'pass',
+                            usernameVariable: 'user')
+                }
                 sh 'mvn --version'
                 sh 'mvn clean'
-                sh 'echo $BROWSER_USED'
-                sh 'echo $SEL_USER'
+                sh 'echo $user'
                 sh 'printenv | sort'
                 }
         }
