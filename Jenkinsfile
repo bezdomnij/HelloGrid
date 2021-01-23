@@ -14,7 +14,7 @@ pipeline {
                 script {withCredentials(usernamePassword([
                             credentialsId: 'githubcreds',
                             passwordVariable: 'pass',
-                            usernameVariable: 'user')]
+                            usernameVariable: 'user'])
                 }
                 sh 'mvn --version'
                 sh 'mvn clean'
