@@ -6,7 +6,6 @@ pipeline {
         string(name: 'firefox', defaultValue: 'firefox', description: 'Firefox browser')
         }
     environment {
-        BROWSER_USED = "chrome"
         SEL_USER = "selenium"
         }
     stages {
@@ -23,13 +22,16 @@ pipeline {
             failFast true
             parallel {
             stage ('run with firefox'){
+                environment {
+                    BROWSER = "firefox"
+                }
                 when {
                     expression { params.BROWSER == 'both' || params.BROWSER == 'firefox'}
                     }
                 steps {
-                    script {
-                            env.BROWSER = firefox
-                        }
+//                     script {
+//                             env.BROWSER = firefox
+//                         }
                     sh 'echo run w/ firefox'
                     sh 'echo $BROWSER'
                     sh 'mvn test'
@@ -41,13 +43,16 @@ pipeline {
                 }
             }
             stage ('run with chrome'){
+                environment {
+                                    BROWSER = "chrome"
+                                }
                 when {
                     expression { params.BROWSER == 'both' || params.BROWSER == 'chrome'}
                     }
                 steps {
-                    script {
-                        env.BROWSER = chrome
-                    }
+//                     script {
+//                         env.BROWSER = chrome
+//                     }
                     sh 'echo run w/ chrome'
                     sh 'echo $BROWSER'
                     sh 'mvn test'
