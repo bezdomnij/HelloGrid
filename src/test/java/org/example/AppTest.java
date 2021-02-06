@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class AppTest {
     private WebDriver driver;
     private final String nodeUrl
-            = "https://selenium:CoolCanvas19.@seleniumhub.codecool.codecanvas.hu/wd/hub";
+            = "http://localhost:4446/wd/hub";
 
     @Test
     public void shouldAnswerWithTrue() throws MalformedURLException {
