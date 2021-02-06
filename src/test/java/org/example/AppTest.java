@@ -15,8 +15,7 @@ import static org.junit.Assert.fail;
 
 public class AppTest {
     private WebDriver driver;
-    private final String nodeUrl
-            = "http://localhost:4446/wd/hub";
+    private final String nodeUrl = "http://localhost:4446/wd/hub";
     private String browser;
     private DesiredCapabilities capabilities = null;
 
