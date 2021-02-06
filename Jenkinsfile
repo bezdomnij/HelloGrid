@@ -11,11 +11,17 @@ pipeline {
     stages {
         stage ('Build'){
             steps {
-                sh 'mvn --version'
-                sh 'mvn clean'
-                sh 'echo $BROWSER_USED'
-                sh 'echo $SEL_USER'
-                sh 'printenv | sort'
+script {
+                withCredentials([usernamePassword(
+                credentialsId: 'githubcreds',
+                passwordVariable: 'pass',
+                usernameVariable: 'user')])
+                {
+                    echo 'Test phase with chrome: '
+                    // sh "mvn test -DUSER=$user -DPASS=$pass -DSEL_PASS=$sel_pass"
+                    sh 'echo $user'
+                }
+            }
                 }
         }
         stage ('Parallel stage') {
@@ -26,9 +32,11 @@ pipeline {
                         BROWSER = "firefox"
                     }
                     steps {
+
                         sh 'echo run w/ firefox'
                         sh 'echo $BROWSER'
-                        sh 'mvn test'
+//                         sh 'mvn -DBROWSER=chrome test'
+                        sh 'echo $BROWSER'
                     }
                     post {
                         always {
