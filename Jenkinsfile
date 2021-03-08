@@ -18,9 +18,9 @@ pipeline {
                 stage('run with chrome') {
                    environment {
                         BROWSER="chrome"}
-                   when {
-                        expression { params.BROWSER == 'both' || params.BROWSER == 'chrome' }
-                   }
+//                    when {
+//                         expression { params.BROWSER == 'both' || params.BROWSER == 'chrome' }
+//                    }
                    steps {
                        sh 'echo $BROWSER'
                        sh 'mvn -Dtest=AppTest test'
@@ -35,9 +35,9 @@ pipeline {
                 stage('run with firefox') {
                    environment {
                          BROWSER="firefox"}
-                   when {
-                       expression { params.BROWSER == 'both' || params.BROWSER == 'firefox' }
-                   }
+//                    when {
+//                        expression { params.BROWSER == 'both' || params.BROWSER == 'firefox' }
+//                    }
                    steps {
                        sh 'echo $BROWSER'
                        sh 'mvn -Dtest=AppTest test'
