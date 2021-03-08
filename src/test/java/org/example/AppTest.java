@@ -22,14 +22,15 @@ import java.net.URL;
 public class AppTest 
 {
     static WebDriver driver;
+    private final String nodeUrl = "http://localhost:4446/wd/hub";
 
     @BeforeTest
     public void setUp()throws MalformedURLException {
+
 //        final String WEBDRIVER = "webdriver.chrome.driver";
 //        final String CHROME_DRIVER_LOCATION = "/home/david/Letöltések";
 //        System.setProperty(WEBDRIVER, CHROME_DRIVER_LOCATION);
 //
-        String nodeUrl = "https://seleniumhub.codecool.codecanvas.hu/wd/hub";
         String browser = System.getenv("BROWSER");
         DesiredCapabilities capabilities;
         if (browser.equals("chrome")) {
