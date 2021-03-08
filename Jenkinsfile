@@ -17,7 +17,7 @@ pipeline {
             parallel {
                 stage('run with chrome') {
                    environment {
-                        BROWSER=chrome}
+                        BROWSER="chrome"}
                    when {
                         expression { params.BROWSER == 'both' || params.BROWSER == 'chrome' }
                    }
@@ -34,7 +34,7 @@ pipeline {
                 }
                 stage('run with firefox') {
                    environment {
-                         BROWSER=chrome}
+                         BROWSER="firefox"}
                    when {
                        expression { params.BROWSER == 'both' || params.BROWSER == 'firefox' }
                    }
