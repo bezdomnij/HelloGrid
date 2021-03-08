@@ -64,22 +64,22 @@ public class AppTest
         assertEquals(practiceUrl, currentUrl);
     }
 
-    @Ignore
-    @Test
-    public void shouldAnswerWithTrue2() throws MalformedURLException {
-//        String nodeUrl = "https://selenium:CoolCanvas19.@seleniumhub.codecool.codecanvas.hu/wd/hub";
-//        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-//        capabilities.setBrowserName("firefox");
-//        capabilities.setPlatform(Platform.LINUX);
-//        driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
-
-        String practiceUrl = "https://www.google.com/";
-        driver.get(practiceUrl);
-        String currentUrl = driver.getCurrentUrl();
-        System.out.println(currentUrl);
-        driver.quit();
-        assertEquals(practiceUrl, currentUrl);
-    }
+//    @Ignore
+//    @Test
+//    public void shouldAnswerWithTrue2() throws MalformedURLException {
+////        String nodeUrl = "https://selenium:CoolCanvas19.@seleniumhub.codecool.codecanvas.hu/wd/hub";
+////        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+////        capabilities.setBrowserName("firefox");
+////        capabilities.setPlatform(Platform.LINUX);
+////        driver = new RemoteWebDriver(new URL(nodeUrl), capabilities);
+//
+//        String practiceUrl = "https://www.google.com/";
+//        driver.get(practiceUrl);
+//        String currentUrl = driver.getCurrentUrl();
+//        System.out.println(currentUrl);
+//        driver.quit();
+//        assertEquals(practiceUrl, currentUrl);
+//    }
 
     @AfterTest
     public void afterTest(){
