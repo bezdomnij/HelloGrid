@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    
     parameters {
         string(name: 'browserToRun', defaultValue: 'both', description: 'Browsers to run: Both, Chrome, Firefox')
         string(name: 'chrome', defaultValue: 'chrome', description: 'Chrome browser')
